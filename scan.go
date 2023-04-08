@@ -11,7 +11,6 @@ import (
 	"strings"
 )
 
-
 func scan(folder string) {
 	// pick a directory location
 
@@ -52,8 +51,6 @@ func getDotFilePath() string {
 }
 
 func scanGitFolders(folders []string, folder string) []string {
-	// trim the last '/'
-
 	folder = strings.TrimSuffix(folder, "/")
 	f, err := os.Open(folder)
 	if err != nil {
@@ -109,7 +106,7 @@ func parseFileLinesToSlice(filePath string) []string {
 }
 
 func openFile(filePath string) *os.File {
-	f, err := os.OpenFile(filePath, os.O_APPEND|os.O_WRONLY, 0755)
+	f, err := os.OpenFile(filePath, os.O_APPEND|os.O_RDWR, 0755)
 	if err != nil {
 		if os.IsNotExist(err) {
 			_, err = os.Create(filePath)
