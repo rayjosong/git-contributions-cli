@@ -2,14 +2,13 @@ package main
 
 import (
 	"flag"
+	"gogitlocalcontribs/scan"
+	"gogitlocalcontribs/stats"
 )
 
 // scan given a path crawls it and its subfolders
 // searching for Git repositories
 
-func stats(email string) {
-	print("stats")
-}
 
 func main() {
 	var folder string
@@ -20,9 +19,9 @@ func main() {
 	flag.Parse()
 
 	if folder != "" {
-		scan(folder)
+		scan.Scan(folder)
 		return
 	}
 
-	stats(email)
+	stats.Stats(email)
 }
